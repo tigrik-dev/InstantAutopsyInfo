@@ -8,9 +8,13 @@
     <AssemblyName>InstantAutopsyInfo</AssemblyName>
     <RootNamespace>InstantAutopsyInfo</RootNamespace>
   </PropertyGroup>
+  <PropertyGroup>
+    <SolutionRoot>$(MSBuildProjectDirectory)\..\</SolutionRoot>
+    <ScriptsDir>$(SolutionRoot).scripts\\</ScriptsDir>
+    <BuildCommonRoot>$(ScriptsDir)X2ModBuildCommon\</BuildCommonRoot>
+  </PropertyGroup>
+  <Import Project="$(BuildCommonRoot)XCOM2.targets" />
   <ItemGroup>
-    
-    
     <Folder Include="Config\" />
     <Folder Include="Config\Base\" />
     <Folder Include="Localization\" />
@@ -19,21 +23,6 @@
     <Folder Include="ContentForCook\" />
     <Folder Include="Src\InstantAutopsyInfo\" />
     <Folder Include="Src\InstantAutopsyInfo\Classes\" />
-  </ItemGroup>
-  <ItemGroup>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <Content Include="ReadMe.txt" />
     <Content Include="ModPreview.jpg" />
     <Content Include="ContentOptions.json" />
@@ -48,11 +37,9 @@
     <Content Include="Src\InstantAutopsyInfo\Classes\X2DLCInfo_InstantAutopsyInfo.uc" />
     <Content Include="Src\InstantAutopsyInfo\Classes\Help.uc" />
     <Content Include="Src\InstantAutopsyInfo\Classes\ConfigEngine.uc" />
+    <Content Include="Config\XComInstantAutopsyInfo_Logger.ini" />
+    <Content Include="Src\InstantAutopsyInfo\LoggerMacros.uci" />
+    <Content Include="Src\InstantAutopsyInfo\Classes\Logger.uc" />
+    <Content Include="Src\InstantAutopsyInfo\Classes\Version.uc" />
   </ItemGroup>
-  <PropertyGroup>
-    <SolutionRoot>$(MSBuildProjectDirectory)\..\</SolutionRoot>
-    <ScriptsDir>$(SolutionRoot).scripts\\</ScriptsDir>
-    <BuildCommonRoot>$(ScriptsDir)X2ModBuildCommon\</BuildCommonRoot>
-  </PropertyGroup>
-  <Import Project="$(BuildCommonRoot)XCOM2.targets" />
 </Project>
