@@ -1,0 +1,1 @@
+class X2DLCInfo_InstantAutopsyInfo extends X2DownloadableContentInfo;
