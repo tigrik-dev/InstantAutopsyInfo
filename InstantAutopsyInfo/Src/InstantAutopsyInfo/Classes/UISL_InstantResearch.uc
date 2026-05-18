@@ -19,8 +19,6 @@
  */
 class UISL_InstantResearch extends UIScreenListener;
 
-`include(InstantAutopsyInfo\Src\InstantAutopsyInfo\LoggerMacros.uci)
-
 /**
  * Container describing a single Instant Research requirement entry.
  *
@@ -53,7 +51,6 @@ event OnInit(UIScreen Screen)
 
 	if(ResearchScreen == none) return;
 
-	`TRACE("ResearchScreen != none");
 	PatchResearchScreen(ResearchScreen);
 }
 
@@ -74,8 +71,6 @@ function PatchResearchScreen(UIChooseResearch ResearchScreen)
 	local array<StateObjectReference> Refs;
 
 	local int i;
-
-	`TRACE_ENTRY("");
 
 	History = `XCOMHISTORY;
 	XComHQ = XComGameState_HeadquartersXCom(History.GetSingleGameStateObjectForClass(class'XComGameState_HeadquartersXCom'));
@@ -111,18 +106,15 @@ function PatchTech(UIChooseResearch ResearchScreen, XComGameStateHistory History
 	local ArtifactCost Artifact;
 	local array<InstantRequirementItem> Requirements;
 
-	`TRACE_ENTRY("");
-
 	TechState = XComGameState_Tech(History.GetGameStateForObjectID(Refs[i].ObjectID));
 
 	if(TechState == none) return;
 
 	TechTemplate = TechState.GetMyTemplate();
 	if(TechTemplate == none) return;
-	`TRACE("Tech:" @ TechTemplate.DisplayName);
 
+	// Ignore tech without instant requirements
 	if(TechTemplate.InstantRequirements.RequiredItemQuantities.Length == 0) return;
-	`TRACE("Tech has Instant Requirements:" @ TechTemplate.DisplayName);
 
 	// Don't show requirements for instant research in the Archive
 	if(XComHQ.TechIsResearched(Refs[i]) && !TechState.GetMyTemplate().bRepeatable) return;
@@ -135,8 +127,6 @@ function PatchTech(UIChooseResearch ResearchScreen, XComGameStateHistory History
 	MergeSameRequirements(Requirements);
 
 	ResearchScreen.arrItems[i].Desc = FormatRequirementData(ResearchScreen, Requirements) $ "<br/>" $ ResearchScreen.arrItems[i].Desc;
-
-	`TRACE_EXIT("");
 }
 
 /**
@@ -155,14 +145,12 @@ function InstantRequirementItem GetRequirementData(XComGameState_HeadquartersXCo
 	local InstantRequirementItem RequirementData;
 	local X2ItemTemplate ItemTemplate;
 
-	`TRACE_ENTRY("");
 	ItemTemplate = class'X2ItemTemplateManager'.static.GetItemTemplateManager().FindItemTemplate(Artifact.ItemTemplateName);
 	RequirementData.ItemName = ItemTemplate != none ? ItemTemplate.GetItemFriendlyName() : string(Artifact.ItemTemplateName);
 	RequirementData.Required = Artifact.Quantity;
 	RequirementData.Have = XComHQ.GetNumItemInInventory(Artifact.ItemTemplateName);
 	RequirementData.Met = RequirementData.Have >= RequirementData.Required;
 
-	`TRACE_EXIT("");
 	return RequirementData;
 }
 
@@ -181,8 +169,6 @@ function MergeSameRequirements(out array<InstantRequirementItem> Requirements)
 	local int i;
 	local int j;
 
-	`TRACE_ENTRY("");
-
 	for(i = 0; i < Requirements.Length; ++i)
 	{
 		j = i + 1;
@@ -200,8 +186,6 @@ function MergeSameRequirements(out array<InstantRequirementItem> Requirements)
 			else ++j;
 		}
 	}
-
-	`TRACE_EXIT("");
 }
 
 /**
@@ -221,8 +205,6 @@ function string FormatRequirementData(UIChooseResearch ResearchScreen, array<Ins
 	local string Label, sRequirements, sRequirement, Result;
 	local int i;
 
-	`TRACE_ENTRY("");
-
 	Label = class'UIUtilities_Text'.static.GetColoredText(class'UIUtilities_Text'.static.AddFontInfo(ConstructInstantLabel(ResearchScreen), false, true,, 22), eUIState_Header);
 
 	for(i = 0; i < Requirements.Length; ++i)
@@ -237,7 +219,6 @@ function string FormatRequirementData(UIChooseResearch ResearchScreen, array<Ins
 	sRequirements = class'UIUtilities_Text'.static.AddFontInfo(sRequirements, false, true,, 28);
 
 	Result = Label $ "<br/>" $ sRequirements;
-	`TRACE_EXIT("Return:" @ Result);
 	return Result;
 }
 

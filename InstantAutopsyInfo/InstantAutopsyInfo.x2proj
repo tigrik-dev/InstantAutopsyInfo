@@ -29,14 +29,8 @@
     <Content Include="Config\Base\XComEditor.ini" />
     <Content Include="Config\Base\XComEngine.ini" />
     <Content Include="Config\Base\XComGame.ini" />
-    <Content Include="Localization\InstantAutopsyInfo.int" />
     <Content Include="Src\InstantAutopsyInfo\Classes\UISL_InstantResearch.uc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Src\InstantAutopsyInfo\Classes\X2DLCInfo_InstantAutopsyInfo.uc" />
-    <Content Include="Config\XComInstantAutopsyInfo_Logger.ini" />
-    <Content Include="Src\InstantAutopsyInfo\LoggerMacros.uci" />
-    <Content Include="Src\InstantAutopsyInfo\Classes\Logger.uc" />
-    <Content Include="Src\InstantAutopsyInfo\Classes\Version.uc" />
   </ItemGroup>
 </Project>
