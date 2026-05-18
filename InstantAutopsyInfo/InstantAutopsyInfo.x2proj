@@ -7,6 +7,7 @@
     <SteamPublishID>0</SteamPublishID>
     <AssemblyName>InstantAutopsyInfo</AssemblyName>
     <RootNamespace>InstantAutopsyInfo</RootNamespace>
+    <ProjectGuid>{c36c9aaa-e3c0-4887-862d-e6e8bc242f62}</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup>
     <SolutionRoot>$(MSBuildProjectDirectory)\..\</SolutionRoot>
@@ -25,18 +26,14 @@
     <Folder Include="Src\InstantAutopsyInfo\Classes\" />
     <Content Include="ReadMe.txt" />
     <Content Include="ModPreview.jpg" />
-    <Content Include="ContentOptions.json" />
     <Content Include="Config\Base\XComEditor.ini" />
     <Content Include="Config\Base\XComEngine.ini" />
     <Content Include="Config\Base\XComGame.ini" />
-    <Content Include="Config\XComTemplateCreator.ini" />
-    <Content Include="Config\XComTemplateEditor.ini" />
-    <Content Include="Localization\XComGame.int" />
     <Content Include="Localization\InstantAutopsyInfo.int" />
-    <Content Include="Src\extra_globals.uci" />
+    <Content Include="Src\InstantAutopsyInfo\Classes\UISL_InstantResearch.uc">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Src\InstantAutopsyInfo\Classes\X2DLCInfo_InstantAutopsyInfo.uc" />
-    <Content Include="Src\InstantAutopsyInfo\Classes\Help.uc" />
-    <Content Include="Src\InstantAutopsyInfo\Classes\ConfigEngine.uc" />
     <Content Include="Config\XComInstantAutopsyInfo_Logger.ini" />
     <Content Include="Src\InstantAutopsyInfo\LoggerMacros.uci" />
     <Content Include="Src\InstantAutopsyInfo\Classes\Logger.uc" />

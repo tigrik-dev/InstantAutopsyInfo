@@ -119,13 +119,13 @@ static function string GetVersionStringWithPrefix()
 /**
  * Returns a user-friendly display string for UI or logs.
  *
- * Example: "Instant Autopsy Info version: 0.1.0"
+ * Example: "Instant Research Requirements version: 0.1.0"
  *
  * @return string Display string
  */
 static function string GetDisplayString()
 {
-    return "Instant Autopsy Info version:" @ GetVersionString();
+    return "Instant Research Requirements version:" @ GetVersionString();
 }
 
 defaultproperties

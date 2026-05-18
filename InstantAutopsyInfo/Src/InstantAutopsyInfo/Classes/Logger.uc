@@ -21,7 +21,7 @@
  * 
  * @author Tigrik
  */
-class Logger extends Object config(AnnounceStrengthForceLevel_Logger);
+class Logger extends Object config(InstantAutopsyInfo_Logger);
 
 var config bool bEnableInfo;
 var config bool bEnableDebug;
@@ -29,7 +29,7 @@ var config bool bEnableTrace;
 
 static function LogWithLevel(string Level, String Msg)
 {
-    `LOG(Level @ Msg,, 'AnnounceStrengthForceLevel');
+    `LOG(Level @ Msg,, 'InstantAutopsyInfo');
 }
 
 static function Trace(string Msg)
